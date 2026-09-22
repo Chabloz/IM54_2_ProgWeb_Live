@@ -10,7 +10,11 @@ console.log("max(4, 18, 3) = " + getMax(4, 18, 3));
 
 // 2) Ecrire une fonction qui retourne un nombre entier pseudo-aléatoire entre une borne inférieure et une borne supérieure (bornes entières et comprises dans l'intervalle).
 function getRandomInt(min, max) {
-  return Math.random() * (max - min);
+  return Math.floor(Math.random() * (max - min + 1)) + min;
+}
+
+for (let i=0; i<10; i++) {
+  console.log(getRandomInt(1,6));
 }
 
 // 3) Ecrire deux fonctions compareA et compareB
