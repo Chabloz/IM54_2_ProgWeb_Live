@@ -9,8 +9,10 @@ function getMaxV2(a, b, c) {
   let max = a;
   if (b > max) max = b;
   if (c > max) max = c;
-  return max;
+  return max; // ou avec Math: return Math.max(a, b, c)
 }
+
+console.log(getMaxV2(5));
 
 console.log("max(2, 3, 4) = " + getMax(2, 3, 4));
 console.log("max(4, 18, 3) = " + getMax(4, 18, 3));
@@ -39,13 +41,56 @@ function compareB(a, b) {
 }
 
 console.log("compareA(4, '4') = " + compareA(4, '4'));
+console.log("compareA(4.0, '4') = " + compareA(4.0, '4'));
+console.log("compareA(4, 'quatre') = " + compareA(4, 'quatre'));
 
-if (true) {
+console.log("compareB(8, '8') = " + compareB(8, '8'));
+console.log("compareB(8, 'huit') = " + compareB(8, 'huit'));
 
-} else {
-
+/*
+4) En fonction d'un nombre n (ou n > 0) donné en paramètre, écrire une fonction qui affiche dans la console :
+Les nombres entiers pairs compris entre 0 et n.
+*/
+function printEven(n){
+  for (let i=0; i<=n; i = i + 2) {
+    console.log(i);
+  }
 }
 
-for (let i=0; i<100; i = i + 1) {
-
+function printEvenV2(n){
+  for (let i=0; i<=n; i = i + 1) {
+    if (i % 2 == 0) console.log(i);
+  }
 }
+
+function foo(){
+  const res = {};
+  res.tail = 2;
+  res.face = 4;
+  res.rolls = [0,1,1,0,0,0];
+  res.log = function () {
+
+  }
+  res.nb = 18;
+  return res;
+}
+
+const res = {
+  tail: 13,
+  face: 6,
+};
+
+foo();
+
+printEven(20);
+
+
+// if (true) {
+
+// } else {
+
+// }
+
+// for (let i=0; i<100; i = i + 1) {
+
+// }
