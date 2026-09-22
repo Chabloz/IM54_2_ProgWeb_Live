@@ -31,13 +31,11 @@ for (let i=0; i<10; i++) {
 
 // 3) Ecrire deux fonctions compareA et compareB
 function compareA(a, b) {
-  // TODO
-  return true;
+  return a == b;
 }
 
 function compareB(a, b) {
-  // TODO
-  return true;
+  return a === b;
 }
 
 console.log("compareA(4, '4') = " + compareA(4, '4'));
