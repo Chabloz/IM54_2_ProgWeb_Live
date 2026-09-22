@@ -5,8 +5,20 @@ function getMax(a, b, c) {
   return c;
 }
 
+function getMaxV2(a, b, c) {
+  let max = a;
+  if (b > max) max = b;
+  if (c > max) max = c;
+  return max;
+}
+
 console.log("max(2, 3, 4) = " + getMax(2, 3, 4));
 console.log("max(4, 18, 3) = " + getMax(4, 18, 3));
+console.log("max(2, 3, 4) = " + getMaxV2(2, 3, 4));
+console.log("max(4, 18, 3) = " + getMaxV2(4, 18, 3));
+console.log("max(6, 5, 4) = " + getMaxV2(6, 5, 4));
+console.log("max(2, 18, 1) = " + getMaxV2(2, 18, 1));
+console.log("max(9, 6, 2) = " + getMaxV2(9, 6, 2));
 
 // 2) Ecrire une fonction qui retourne un nombre entier pseudo-aléatoire entre une borne inférieure et une borne supérieure (bornes entières et comprises dans l'intervalle).
 function getRandomInt(min, max) {
@@ -14,7 +26,7 @@ function getRandomInt(min, max) {
 }
 
 for (let i=0; i<10; i++) {
-  console.log(getRandomInt(1,6));
+  console.log("getRandomInt(3, 7) = " + getRandomInt(3, 7));
 }
 
 // 3) Ecrire deux fonctions compareA et compareB
@@ -29,3 +41,13 @@ function compareB(a, b) {
 }
 
 console.log("compareA(4, '4') = " + compareA(4, '4'));
+
+if (true) {
+
+} else {
+
+}
+
+for (let i=0; i<100; i = i + 1) {
+
+}
