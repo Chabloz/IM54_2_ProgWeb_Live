@@ -1,6 +1,6 @@
 // 1) Ecrire une fonction qui retourne la plus grande valeur parmi les trois nombres fournis en paramètre.
 function getMax(a, b, c) {
-  if (a > b || a > c) return a;
+  if (a > b && a > c) return a;
   if (b > c && b > c) return b;
   return c;
 }
