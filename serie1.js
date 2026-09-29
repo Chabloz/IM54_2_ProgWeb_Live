@@ -63,34 +63,81 @@ function printEvenV2(n){
   }
 }
 
-function foo(){
-  const res = {};
-  res.tail = 2;
-  res.face = 4;
-  res.rolls = [0,1,1,0,0,0];
-  res.log = function () {
-
+//le nombre de piles et de faces obtenus sur un lancé de n pièces de monnaies simulées par l'utilisation du générateur de nombre aléatoire.
+function rollNTimes(min, max, times) {
+  // TODO: validation des inputs
+  const rolls = [];
+  for (let i=0; i<times; i++) {
+    rolls.push(getRandomInt(min, max));
   }
-  res.nb = 18;
-  return res;
+  return rolls;
 }
 
-const res = {
-  tail: 13,
-  face: 6,
-};
+function count(valToCount, values){
+  // TODO: validation
+  let count = 0;
+  for (const val of values) {
+    if (val === valToCount) count++;
+  }
+  return count;
+}
 
-foo();
+const TAILS = 0;
+const HEADS = 1;
 
-printEven(20);
+function rollMoney(times) {
+  const rolls = rollNTimes(TAILS, HEADS, times);
+  const nbTails = count(TAILS, rolls);
+  const nbHeads = count(HEADS, rolls);
+  //const nbHeads = times - nbTails;
+  return {
+    tails: nbTails,
+    heads: nbHeads,
+  }
+}
 
+console.log(rollMoney(10000));
 
-// if (true) {
+function isPrime(n) {
+    if (isNaN(n) || !Number.isInteger(n)) throw 'Not an integer';
+    if (n > Number.MAX_SAFE_INTEGER) throw 'Number too big';
+    if (n <= 1) return false;
+    if (n == 2) return true;
+    if (n % 2 == 0) return false;
+    if (n == 3) return true;
+    if (n % 3 == 0) return false;
+    // On pourrait continuer avec le crible d'Ératosthène pour les multiples de 5, 7, 11, ...
+    // mais cela rendrait la programmation de la boucle suivante très complexe
+    // et il faudrait donc repenser la totalité de l'algorithme.
+    let step = 2;
+    let div = 5;
+    while (div * div <= n && n % div != 0) {
+        div += step;
+        // Pas alterné (+2 +4 +2 +4 ...) pour ne pas parcourir les multiples de 2 ni de 3
+        step = (step + 1) % 4 + 1;
+    }
+    // Si aucun diviseur n'a été trouvé avant la racine du nb, c'est un nombre premier
+    return div * div > n;
+}
 
-// } else {
+console.log("0 is prime ?" +  isPrime(0));
+console.log(isPrime(1));
+console.log(isPrime(2));
+console.log(isPrime(7));
+console.log(isPrime(87178291197));
+console.log(isPrime(87178291199));
 
-// }
+function double(n) {
+  return n*2;
+}
 
-// for (let i=0; i<100; i = i + 1) {
+function square(n) {
+  return n ** 2;
+}
 
-// }
+function transform(val, fct) {
+  return fct(val);
+}
+
+console.log(transform(5, double));
+console.log(double(5));
