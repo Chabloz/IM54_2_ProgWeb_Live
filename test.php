@@ -1,13 +1,13 @@
 <?php
 function test($n) {
-  return ['tail' => 2, 'face' => 4];
+  return ['tails' => 2, 'heads' => 4];
 }
 
 /*
 
 
 function test(n) {
-  return {tail: 2, face: 4};
+  return {tails: 2, heads: 4};
 }
 
 */
