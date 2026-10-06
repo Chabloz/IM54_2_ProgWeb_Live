@@ -141,3 +141,22 @@ function transform(val, fct) {
 
 console.log(transform(5, double));
 console.log(double(5));
+
+// 10) Écrire une fonction createGreeting qui reçoit une formule de salutation et
+//  retourne une nouvelle fonction. La fonction retournée reçoit un prénom et retourne le message complet.
+function createGreeting(greeting) {
+  return function (name) {
+    return greeting + ' ' + name + ' !';
+  }
+}
+
+function createGreetingV2(greeting) {
+  return name => greeting + ' ' + name + ' !';
+}
+
+const sayHello = createGreeting("Hello");
+const sayWelcome = createGreeting("Welcome");
+
+const greetingHello = sayHello('Nicolas');
+const greetingWelcome = sayWelcome('Nicolas');
+console.log(greetingHello, greetingWelcome, sayWelcome('X'));
