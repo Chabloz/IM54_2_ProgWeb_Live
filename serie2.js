@@ -32,11 +32,29 @@ const ACE = 14;
 const RANKS = [2, 3, 4, 5, 6, 7, 8, 9, 10, JACK, QUEEN, KING, ACE];
 const SUITS = ['hearts', 'spades', 'clubs', 'diamonds'];
 
-const aceOfSpade = {
-  rank: ACE,
-  suit: 'spade',
-};
+function buildDeck() {
+  const deck = [];
+  for (const suit of SUITS) {
+    for (const rank of RANKS) {
+      const card = {
+        "rank": rank,
+        "suit": suit,
+      };
+      deck.push(card);
+    }
+  }
+  return deck;
+}
 
-const deck = [aceOfSpade];
+function shuffleArray(array) {
+    for (let i = array.length - 1; i >= 1; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [array[i], array[j]] = [array[j], array[i]];
+    }
+    return array;
+}
 
+const deck = buildDeck();
+const deckShuffled = shuffleArray([...deck])
 console.log(deck);
+console.log(deckShuffled);
