@@ -29,6 +29,9 @@ const QUEEN = 12;
 const KING = 13;
 const ACE = 14;
 
+const RANKS = [2, 3, 4, 5, 6, 7, 8, 9, 10, JACK, QUEEN, KING, ACE];
+const SUITS = ['hearts', 'spades', 'clubs', 'diamonds'];
+
 const aceOfSpade = {
   rank: ACE,
   suit: 'spade',
@@ -37,7 +40,3 @@ const aceOfSpade = {
 const deck = [aceOfSpade];
 
 console.log(deck);
-
-
-
-
