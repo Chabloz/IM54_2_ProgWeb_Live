@@ -54,7 +54,25 @@ function shuffleArray(array) {
     return array;
 }
 
+function compareRank(card1, card2) {
+  if (card1.rank < card2.rank) {
+    return -100;
+  } else if (card1.rank > card2.rank) {
+    return +100;
+  } else {
+    return card1.suit.localeCompare(card2.suit);
+  }
+}
+
+function compareRank(card1, card2) {
+  return card1.rank - card2.rank;
+}
+
 const deck = buildDeck();
 const deckShuffled = shuffleArray([...deck])
 console.log(deck);
 console.log(deckShuffled);
+const deckOrderByRank = deckShuffled.toSorted(compareRank);
+console.log(deckOrderByRank);
+
+// console.log(compareRank(deck[4], deck[2]) == 0 ? 'same rank' : 'diff. rank');
