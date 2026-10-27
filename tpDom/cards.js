@@ -1,24 +1,42 @@
-import { shuffle } from "/utils/array.js";
+import { shuffle } from '../utils/array.js';
 
-const deck = document.querySelectorAll('.deck > playing-card');
-const deckShuffle =shuffle([...deck]);
-console.log(deckShuffle);
+const deck = document.querySelectorAll('playing-card');
 
-const title = document.querySelector("h1");
+function clearSelection() {
+  const cards = document.querySelectorAll('playing-card');
+  for (const card of cards) {
+    card.classList.remove('selected');
+  }
+}
+
+function selectCards(selector) {
+  const cards = document.querySelectorAll(selector);
+  clearSelection();
+  for (const card of cards) {
+    card.classList.add('selected');
+  }
+}
+
 const btnAceOfSpade = document.querySelector('#select-ace-spade');
-btnAceOfSpade.addEventListener('click', function (event) {
-  const aceOfSpade = document.querySelector('#SPADE-ACE');
-  aceOfSpade.classList.add('selected')
-})
+btnAceOfSpade.addEventListener('click', () => selectCards('#SPADE-ACE'));
 
+const btnHearth = document.querySelector('#select-hearts');
+btnHearth.addEventListener('click', () => selectCards('.heart'));
 
-const body = document.querySelector('body');
-body.addEventListener('click', function (event) {
-  console.log('body');
-  console.log(event);
-})
+const btnFace = document.querySelector('#select-face-cards');
+btnFace.addEventListener('click', () => selectCards('[data-face-card]'));
 
-const aceOfSpade = document.querySelector('#SPADE-ACE');
-const aceOfSpadeClone = aceOfSpade.cloneNode(true);
-aceOfSpadeClone.setAttribute('id', 'SPADE-ACE-CLONE');
-document.querySelector("#hand").append(aceOfSpadeClone);
+const btnNotSpade = document.querySelector('#select-not-spades');
+btnNotSpade.addEventListener('click', () => selectCards('playing-card:not(.spade)'));
+
+const btnDraw  = document.querySelector('#draw-hand');
+btnDraw.addEventListener('click', () => {
+  const deckShuffled = shuffle([...deck]);
+  const playerHand = deckShuffled.slice(0, 5);
+  const clones = [];
+  for (const card of playerHand) {
+    const clone = card.cloneNode(true);
+    clones.push(clone);
+  }
+  document.querySelector('#hand').replaceChildren(...clones);
+});
