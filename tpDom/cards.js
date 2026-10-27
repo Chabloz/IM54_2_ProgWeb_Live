@@ -1,4 +1,5 @@
 import { shuffle } from '../utils/array.js';
+import { delegateOn } from '../utils/dom.js';
 
 const deck = document.querySelectorAll('playing-card');
 
@@ -36,7 +37,17 @@ btnDraw.addEventListener('click', () => {
   const clones = [];
   for (const card of playerHand) {
     const clone = card.cloneNode(true);
+    clone.classList.remove('selected')
     clones.push(clone);
   }
   document.querySelector('#hand').replaceChildren(...clones);
 });
+
+
+// const allCards = document.querySelectorAll('playing-card');
+// for (const card of allCards) {
+//   card.addEventListener('click', () => console.log('click'));
+// }
+delegateOn('body', 'playing-card', 'click', card => {
+  card.classList.add('selected');
+})
